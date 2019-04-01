@@ -61,7 +61,7 @@ public class PanelSwitcher : MonoBehaviour
         foreach(var item in foodList)
         {
             GameObject prefabClone = Instantiate(prefab, parent);
-            prefabClone.transform.GetChild(0).GetComponent<Text>().text = item.getName()+" - "+ item.getDurability()+"%";
+            prefabClone.transform.GetChild(0).GetComponent<Text>().text = item.getName()+" - "+ calcDuralbility(item.getDurability());
         }
     }
 
@@ -74,5 +74,14 @@ public class PanelSwitcher : MonoBehaviour
         {
             Destroy(parent.GetChild(i).gameObject);
         }
+    }
+
+    public string calcDuralbility(float second)
+    {
+        if (second == 10f)
+        {
+            return "10s";
+        }
+        return "";
     }
 }

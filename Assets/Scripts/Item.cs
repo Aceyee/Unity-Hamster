@@ -13,7 +13,7 @@ public class Item
     private string name;                        // name of the item
     private int price;                          // price of the item
     private const int maxDurability = 100;      // maximum durability
-    private int durability;                     // current durability
+    private float durability;                     // current durability
     private int quantity;                       // NEED TO BE DONE
     private static int count;                   // CURRENT VARIABLE
 
@@ -32,6 +32,7 @@ public class Item
     public Item(string name)
     {
         this.name = name;
+        durability = 10f;
     }
 
     /// <summary>
@@ -45,7 +46,7 @@ public class Item
     /// <summary>
     /// Get item durability
     /// </summary>
-    public int getDurability()
+    public float getDurability()
     {
         return durability;
     }

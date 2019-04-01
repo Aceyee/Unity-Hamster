@@ -18,6 +18,14 @@ public class DataManager
     }
 
     /// <summary>
+    /// Add item to the list
+    /// </summary>
+    public void addItem(string name)
+    {
+        foodList.Add(new Item(name));
+    }
+
+    /// <summary>
     /// Use item, the quantity of the item -1
     /// </summary>
     public static void useItem()
