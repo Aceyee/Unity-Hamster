@@ -8,6 +8,7 @@ public class PanelSwitcher : MonoBehaviour
     private Transform parent;                   // the parent of the detail content items
     private List<Item> foodList;                // a list that contains items
     private Manager manager;                    // the game manager to share information with
+    private GameObject foodTray;
     public GameObject prefab;                   // the prefab style to duplicate a item in the view
 
     /// <summary>
@@ -18,6 +19,7 @@ public class PanelSwitcher : MonoBehaviour
         active = gameObject.activeSelf;
         manager = GameObject.Find("Manager").GetComponent<Manager>();
         parent = GameObject.Find("listFood").transform;
+        foodTray = GameObject.Find("FoodTray");
     }
 
     /// <summary>
@@ -62,6 +64,7 @@ public class PanelSwitcher : MonoBehaviour
         {
             GameObject prefabClone = Instantiate(prefab, parent);
             prefabClone.transform.GetChild(0).GetComponent<Text>().text = item.getName()+" - "+ calcDuralbility(item.getDurability());
+            prefabClone.GetComponent<Button>().onClick.AddListener(foodTray.GetComponent<FoodTray>().addDurability);
         }
     }
 

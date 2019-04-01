@@ -45,6 +45,9 @@ public class FoodTray : MonoBehaviour
 
     public void addDurability()
     {
+        emptyTrayActive = false;
+        halfTrayActive = false;
+        fullTrayActive = false;
         currDurability = maxDurability;
         toogleTrayView();
     }
