@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 public class DataManager
 {
@@ -10,26 +9,42 @@ public class DataManager
         foodList = new List<Item>();
     }
 
-    // add item to list
+    /// <summary>
+    /// Add item to the list
+    /// </summary>
     public void addItem()
     {
         foodList.Add(new Item());
     }
 
-    // use item, the quantity of the item -1
+    /// <summary>
+    /// Add item to the list
+    /// </summary>
+    public void addItem(string name)
+    {
+        foodList.Add(new Item(name));
+    }
+
+    /// <summary>
+    /// Use item, the quantity of the item -1
+    /// </summary>
     public static void useItem()
     {
         //foodList
 
     }
 
-    // if the quantity of an item is 0, return
+    /// <summary>
+    /// Remove the item if its quantity is 0
+    /// </summary>
     public void removeItem()
     {
         //foodList.Remove();
     }
 
-    //return foodlist
+    /// <summary>
+    /// Return the list of food
+    /// </summary>
     public List<Item> getFoodList()
     {
         return foodList;
