@@ -1,15 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PanelSwitcher : MonoBehaviour
 {
-    private bool active;                        // if the current panel displays(active) or hides(inactive)
-    private Transform parent;                   // the parent of the detail content items
-    private List<Item> foodList;                // a list that contains items
-    private Manager manager;                    // the game manager to share information with
-    private GameObject foodTray;
-    public GameObject prefab;                   // the prefab style to duplicate a item in the view
+    protected bool active;                        // if the current panel displays(active) or hides(inactive)
+    protected Manager manager;                    // the game manager to share information with
+    protected Transform listParent;               // the listParent of the detail content items
+    protected GameObject target;                  // food tray, bottle
+    public GameObject prefab;                     // the prefab style to duplicate a item in the view
 
     /// <summary>
     /// set initial value
@@ -18,9 +16,23 @@ public class PanelSwitcher : MonoBehaviour
     {
         active = gameObject.activeSelf;
         manager = GameObject.Find("Manager").GetComponent<Manager>();
-        parent = GameObject.Find("listFood").transform;
-        foodTray = GameObject.Find("FoodTray");
+        init();
     }
+
+    /// <summary>
+    /// init function to be overriden
+    /// </summary>
+    protected virtual void init(){}
+
+    /// <summary>
+    /// Load content of the panel by calling DataManager method
+    /// </summary>
+    public virtual void loadList(){}
+
+    /// <summary>
+    /// Display content of the panel by duplicating the prefab style
+    /// </summary>
+    public virtual void displayItem(){}
 
     /// <summary>
     /// Display and hide a panel
@@ -43,39 +55,13 @@ public class PanelSwitcher : MonoBehaviour
     }
 
     /// <summary>
-    /// Load content of the panel by calling DataManager method
-    /// </summary>
-    public void loadList()
-    {
-        foodList = manager.GetDataManager().getFoodList();
-
-        foreach (Item item in foodList)
-        {
-            //Debug.Log(item.getName());
-        }
-    }
-
-    /// <summary>
-    /// Display content of the panel by duplicating the prefab style
-    /// </summary>
-    public void displayItem()
-    {
-        foreach(var item in foodList)
-        {
-            GameObject prefabClone = Instantiate(prefab, parent);
-            prefabClone.transform.GetChild(0).GetComponent<Text>().text = item.getName()+" - "+ calcDuralbility(item.getDurability());
-            prefabClone.GetComponent<Button>().onClick.AddListener(foodTray.GetComponent<FoodTray>().addDurability);
-        }
-    }
-
-    /// <summary>
     /// Clear content of the panel after the panel is hidden
     /// </summary>
-    public void clearItem()
+    public virtual void clearItem()
     {
-        for (int i=0; i<parent.childCount; i++)
+        for (int i=0; i<listParent.childCount; i++)
         {
-            Destroy(parent.GetChild(i).gameObject);
+            Destroy(listParent.GetChild(i).gameObject);
         }
     }
 
