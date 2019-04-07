@@ -9,10 +9,15 @@ public class Manager : MonoBehaviour
     void Awake()
     {
         dataManager = new DataManager();
-        dataManager.addItem("综合鼠粮");
-        dataManager.addItem();
-        dataManager.addItem();
-        dataManager.addItem();
+        dataManager.addFood("综合鼠粮");
+        dataManager.addFood("草莓");
+        dataManager.addFood("坚果");
+        dataManager.addFood("苹果");
+
+        dataManager.addDrink("清水");
+        dataManager.addDrink("清水2");
+        dataManager.addDrink("清水3");
+        dataManager.addDrink("清水4");
     }
 
     public DataManager GetDataManager()

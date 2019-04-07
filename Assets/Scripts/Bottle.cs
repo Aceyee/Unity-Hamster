@@ -28,10 +28,10 @@ public class Bottle : MonoBehaviour
         bottle5 = transform.GetChild(4).gameObject;
         bottleEmpty = transform.GetChild(5).gameObject;
 
-        toogleTrayView();
+        toogleBottleView();
     }
 
-    private void toogleTrayView()
+    private void toogleBottleView()
     {
         if (currDurability <= 0 && !bottleEmptyActive)
         {
@@ -98,7 +98,7 @@ public class Bottle : MonoBehaviour
         bottle70Active = false;
         bottleFullActive = false;
         currDurability = maxDurability;
-        toogleTrayView();
+        toogleBottleView();
     }
 
     // Update is called once per frame
@@ -107,7 +107,7 @@ public class Bottle : MonoBehaviour
         if (currDurability > 0)
         {
             currDurability -= Time.deltaTime;
-            toogleTrayView();
+            toogleBottleView();
         }
     }
 }
