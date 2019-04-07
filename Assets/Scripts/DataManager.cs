@@ -4,12 +4,13 @@ public class DataManager
 {
     private List<Item> foodList;
     private List<Item> drinkList;
+    private List<Item> cleanerList;
 
     public DataManager()
     {
         foodList = new List<Item>();
         drinkList = new List<Item>();
-
+        cleanerList = new List<Item>();
     }
 
     /// <summary>
@@ -45,6 +46,22 @@ public class DataManager
     }
 
     /// <summary>
+    /// Add item to the list
+    /// </summary>
+    public void addCleaner()
+    {
+        cleanerList.Add(new Item());
+    }
+
+    /// <summary>
+    /// Add item to the list
+    /// </summary>
+    public void addCleaner(string name)
+    {
+        cleanerList.Add(new Item(name));
+    }
+
+    /// <summary>
     /// Use item, the quantity of the item -1
     /// </summary>
     public static void useItem()
@@ -75,5 +92,13 @@ public class DataManager
     public List<Item> getDrinkList()
     {
         return drinkList;
+    }
+
+    /// <summary>
+    /// Return the list of food
+    /// </summary>
+    public List<Item> getCleanerList()
+    {
+        return cleanerList;
     }
 }

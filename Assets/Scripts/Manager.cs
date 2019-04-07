@@ -15,9 +15,9 @@ public class Manager : MonoBehaviour
         dataManager.addFood("苹果");
 
         dataManager.addDrink("清水");
-        dataManager.addDrink("清水2");
-        dataManager.addDrink("清水3");
-        dataManager.addDrink("清水4");
+
+        dataManager.addCleaner("清洁剂");
+
     }
 
     public DataManager GetDataManager()
